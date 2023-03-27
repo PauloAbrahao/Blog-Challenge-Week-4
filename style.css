@@ -42,16 +42,17 @@ header nav ul {
 
 /* CUSTOMIZING HEADER INPUT */
 li > input {
-  color: #000000;
+  color: var(--text-color);
+  background: transparent;
+  border: .5px solid var(--gray);
   border-radius: 5px;
-  padding: 5px;
-  height: 1.4rem;
+  padding: 10px;
+  height: 1.5rem;
   width: 15rem;
   font-size: 1rem;
 
   /* RESET INPUT STYLE */
   box-shadow: 0 0 0 0;
-  border: 0 none;
   outline: 0;
 }
 

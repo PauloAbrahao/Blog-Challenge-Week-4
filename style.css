@@ -108,3 +108,10 @@ main {
   opacity: 1;
   font-size: 1rem;
 }
+
+footer h2 {
+  width: fit-content;
+  margin: auto;
+  font-size: 1rem;
+  padding: 1.2rem;
+}

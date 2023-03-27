@@ -87,8 +87,16 @@ main {
   grid-gap: 1rem;
 }
 
+#blog-list img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
 .post {
   width: 100%;
+  height: fit-content;
   border: 1px solid var(--gray);
   border-radius: 5px;
   padding: 1rem;
@@ -96,11 +104,19 @@ main {
 
 .post-title {
   font-size: 1.5rem;
+  margin-top: .5rem;
   margin-bottom: 0.8rem;
 }
 
 .post-content {
   margin-bottom: 0.8rem;
+
+  /* LIMIT BODY TEXT TO ONLY 3 LINES */
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
 }
 
 .post-link:hover {

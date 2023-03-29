@@ -40,27 +40,7 @@ header nav ul {
   margin: 1rem;
 }
 
-/* CUSTOMIZING HEADER INPUT */
-li > input {
-  color: var(--text-color);
-  background: transparent;
-  border: .5px solid var(--gray);
-  border-radius: 5px;
-  padding: 10px;
-  height: 1.5rem;
-  width: 15rem;
-  font-size: 1rem;
-
-  /* RESET INPUT STYLE */
-  box-shadow: 0 0 0 0;
-  outline: 0;
-}
-
 /* MAIN CSS */
-
-#post-details {
-  display: none;
-}
 
 main {
   margin: 5rem auto;
@@ -108,7 +88,7 @@ main {
 
 .post-title {
   font-size: 1.5rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   margin-bottom: 0.8rem;
 }
 
@@ -116,10 +96,10 @@ main {
   margin-bottom: 0.8rem;
 
   /* LIMIT BODY TEXT TO ONLY 3 LINES */
-  overflow: hidden; 
+  overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3; 
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
@@ -154,12 +134,8 @@ footer h2 {
     min-width: 200px;
   }
 
-  li > input {
-    width: 9rem;
-  }
-
   main {
-    width: 100%; 
+    width: 100%;
     margin: 2rem auto;
   }
 
@@ -172,11 +148,11 @@ footer h2 {
   }
 
   .post-resume {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 
   .post-link {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 
   #main-section {
@@ -184,7 +160,7 @@ footer h2 {
   }
 
   footer h2 {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 }
 

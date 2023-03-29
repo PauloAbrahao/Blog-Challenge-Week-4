@@ -7,7 +7,7 @@ const posts = [
         imageDescription: "Some mountains and hills, a beautiful landscape",
         body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptas, quod, quia, quae voluptates quibusdam voluptatibus voluptatum quidem quos quas nesciunt. Quisquam, quae. Quisquam voluptas, quod, quia, quae voluptates quibusdam voluptatibus voluptatum quidem quos quas nesciunt. Quisquam, quae.",
         read_more: "Read More",
-        link_to: "./src/pages/post.html",
+        link_to: "./src/pages/post.html?id=1",
     },
     {
         id: 2,
@@ -16,7 +16,7 @@ const posts = [
         imageDescription: "A wheat plantation",
         body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptas, quod, quia, quae voluptates quibusdam voluptatibus voluptatum quidem quos quas nesciunt. Quisquam, quae.",
         read_more: "Read More",
-        link_to: "./src/pages/post.html",
+        link_to: "./src/pages/post.html?id=2",
     },
     {
         id: 3,
@@ -25,7 +25,7 @@ const posts = [
         imageDescription: "Some buildings in a metropolis",
         body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae. Quisquam voluptas, quod, quia, quae voluptates quibusdam voluptatibus voluptatum quidem quos quas nesciunt.",
         read_more: "Read More",
-        link_to: "./src/pages/post.html",
+        link_to: "./src/pages/post.html?id=3",
     },
     {
         id: 4,
@@ -34,37 +34,59 @@ const posts = [
         imageDescription: "A beautiful city at night, with an amusement park",
         body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptas, quod, quia, quae voluptates quibusdam voluptatibus voluptatum quidem quos quas nesciunt. Quisquam, quae. Quisquam voluptas, quod, quia, quae voluptates quibusdam voluptatibus voluptatum quidem quos quas nesciunt.",
         read_more: "Read More",
-        link_to: "./src/pages/post.html",
+        link_to: "./src/pages/post.html?id=4",
     },
 ];
 const postComments = [
     {
         id: 1,
         postId: 1,
-        email: "novoemail@outlook.com",
+        email: "newemail@outlook.com",
         body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     },
     {
         id: 2,
         postId: 1,
-        email: "novoemail2@outlook.com",
+        email: "newemail2@outlook.com",
         body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    },
+    {
+        id: 1,
+        postId: 2,
+        email: "post2example@outlook.com",
+        body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
     },
     {
         id: 2,
         postId: 2,
-        email: "novoemail2@outlook.com",
+        email: "post2example@outlook.com",
         body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    },
+    {
+        id: 3,
+        postId: 2,
+        email: "post2example@outlook.com",
+        body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+    },
+    {
+        id: 1,
+        postId: 3,
+        email: "post3mail@outlook.com",
+        body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    },
+    {
+        id: 1,
+        postId: 4,
+        email: "post4mail@outlook.com",
+        body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     },
 ];
 class PostComponent {
     constructor(postsArray, postCommentsArray) {
         this.postsArray = postsArray;
         this.postCommentsArray = postCommentsArray;
-        this.renderPosts();
-        this.mountSpecificPost(1);
     }
-    renderPosts() {
+    renderListOfPosts() {
         const blogList = document.getElementById("blog-list");
         let postComponent = "";
         this.postsArray.map((post) => {
@@ -78,7 +100,7 @@ class PostComponent {
         });
         blogList.innerHTML = postComponent;
     }
-    mountSpecificPost(id) {
+    renderSpecificPost(id) {
         const postDetails = document.getElementById("comments");
         const title = document.getElementById("post-title");
         const image = document.getElementById("post-image");
@@ -89,7 +111,7 @@ class PostComponent {
         const listOfPostsWithComments = this.postCommentsArray;
         listOfPosts.forEach((post) => {
             listOfPostsWithComments.forEach((comment) => {
-                if (post.id === comment.postId) {
+                if (id === post.id && id === comment.postId) {
                     title.textContent = post.title;
                     image.src = post.imageUrl;
                     imageDescription.alt = post.imageDescription;
@@ -109,6 +131,23 @@ class PostComponent {
         });
         postDetails.innerHTML = renderPostInformation;
     }
+    getPostId() {
+        const url = window.location.href;
+        const id = url.split("=")[1];
+        return +id;
+    }
+    validatePage() {
+        if (window.location.pathname === "/index.html" || window.location.pathname === "/") {
+            console.log("RENDER HOME PAGE");
+            post.renderListOfPosts();
+        }
+        else if (window.location.pathname === "/src/pages/post.html") {
+            console.log("RENDER SPECIFIC POST");
+            const id = post.getPostId();
+            post.renderSpecificPost(id);
+        }
+    }
 }
 const post = new PostComponent(posts, postComments);
+post.validatePage();
 //# sourceMappingURL=data.js.map

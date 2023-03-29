@@ -1,4 +1,4 @@
-/* DECLARING COLOR VARIABLES  */
+/* DECLARING GLOBAL COLOR VARIABLES  */
 :root {
   --background-color: #0d1117;
   --text-color: #fff;
@@ -42,27 +42,7 @@ header nav ul {
   margin: 1rem;
 }
 
-/* CUSTOMIZING HEADER INPUT */
-li > input {
-  color: var(--text-color);
-  background: transparent;
-  border: .5px solid var(--gray);
-  border-radius: 5px;
-  padding: 10px;
-  height: 1.5rem;
-  width: 15rem;
-  font-size: 1rem;
-
-  /* RESET INPUT STYLE */
-  box-shadow: 0 0 0 0;
-  outline: 0;
-}
-
 /* MAIN CSS */
-
-#blog-list {
-  display: none;
-}
 
 main {
   margin: 2rem auto;
@@ -109,7 +89,7 @@ main {
 
 .post-title {
   font-size: 1.5rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   margin-bottom: 0.8rem;
 }
 
@@ -117,38 +97,39 @@ main {
   margin-bottom: 0.8rem;
 
   /* LIMIT BODY TEXT TO ONLY 3 LINES */
-  overflow: hidden; 
+  overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3; 
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
 #comments-section {
   margin-top: 2rem;
-  padding: .5rem;
+  padding: 0.5rem;
   background-color: var(--background-color-comments-section);
   border-radius: 5px;
 }
 
 #comments-section h2 {
   font-size: 1.3rem;
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
 }
 
 #comments-section h3 {
   color: var(--color-autor-name);
   font-size: 1rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .comment {
   border-bottom: 1px solid var(--gray);
-  padding: .8rem 0;
+  padding: 0.8rem 0;
 }
 
 footer h2 {
   width: fit-content;
+  bottom: 0;
   margin: auto;
   font-size: 1rem;
   padding: 1.2rem;
@@ -157,13 +138,27 @@ footer h2 {
 /* media querie for responsiveness */
 
 @media screen and (max-width: 768px) {
+  main {
+    padding: 0;
+  }
+
+  #main-section {
+    width: 85vw;
+  }
+
+  .post {
+    padding: 0;
+    border: 0;
+  }
+
   #post-details {
+    margin: 0;
     grid-template-columns: repeat(1, 1fr);
   }
 
   #post-details img {
     width: 100%;
-    height: 120px;
+    height: 150px;
     object-fit: cover;
     border-radius: 5px;
   }
@@ -172,16 +167,13 @@ footer h2 {
     min-width: 200px;
   }
 
-  li > input {
-    width: 9rem;
-  }
-
   main {
-    width: 100%; 
+    width: 100%;
     margin: 2rem auto;
   }
 
   #post-title {
+    margin-bottom: 1.5rem;
     font-size: 1.7rem;
   }
 
@@ -190,19 +182,25 @@ footer h2 {
   }
 
   .post-content {
-    font-size: .9rem;
+    font-size: 1rem;
+    line-height: 1.4rem;
+
+    overflow: visible;
+    display: block;
   }
 
-  .post-link {
-    font-size: .9rem;
+  .comment-content {
+    font-size: 1rem;
+    line-height: 1.4rem;
   }
 
-  #main-section {
-    margin: auto;
+  #comments-section > h2 {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
   }
 
   footer h2 {
-    font-size: .9rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -210,5 +208,9 @@ footer h2 {
   #post-details {
     margin: 2rem auto;
     max-width: 60vw;
+  }
+
+  .comment-content {
+    font-size: 1.1rem;
   }
 }

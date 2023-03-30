@@ -121,6 +121,7 @@ class PostComponent {
 
     // A loop to render the posts in the home page 
     this.postsArray.map((post) => {
+      // Render the posts in the home page 
       postComponent += `
       <div class="post" id="post">
         <img src="${post.imageUrl}" alt="${post.imageDescription}">
@@ -138,26 +139,32 @@ class PostComponent {
     const postDetails = document.getElementById("comments") as HTMLElement;
     const title = document.getElementById("post-title") as HTMLElement;
     const image = document.getElementById("post-image") as HTMLImageElement;
-    const imageDescription = document.getElementById("post-image") as HTMLImageElement;
-    const body = document.getElementById("post-content") as HTMLParagraphElement;
+    const imageDescription = document.getElementById(
+      "post-image"
+    ) as HTMLImageElement;
+    const body = document.getElementById(
+      "post-content"
+    ) as HTMLParagraphElement;
 
     let renderPostInformation = "";
 
     // A variable to store the posts array and the posts comments array
     const listOfPosts = this.postsArray;
     const listOfPostsWithComments = this.postCommentsArray;
-    
+
     // A loop to access the post data inside each post object
     listOfPosts.forEach((post) => {
       // A loop to access the comments data inside each comment post object
       listOfPostsWithComments.forEach((comment) => {
-        // A conditional to check if the post id is equal to the comment post id
+        // A conditional to check if the post id (id) is equal to the comment post id (postId) 
         if (id === post.id && id === comment.postId) {
+          // Set the post information in the post page (pages/post.html)
           title.textContent = post.title;
           image.src = post.imageUrl;
           imageDescription.alt = post.imageDescription;
           body.textContent = post.body;
 
+          // Render post comments in the post page (pages/post.html)
           renderPostInformation += `
                 <div id="comments-list">
                   <div class="comment">
@@ -177,6 +184,9 @@ class PostComponent {
   }
 
   // A method to get the post id from the url and convert it to a number
+  // The id is used to render the correct post information in the post page (pages/post.html)
+  // The id is also used to render the correct comments in the post page 
+  // This id is passed in the url by the "link_to" key in the posts object
   getPostId() {
     const url = window.location.href;
     const id = url.split("=")[1];
@@ -185,12 +195,15 @@ class PostComponent {
 
   // A method to validate the page and render the correct information
   validatePage() {
-    if (window.location.pathname === "/index.html" || window.location.pathname === "/") {
+    if (
+      window.location.pathname === "/index.html" ||
+      window.location.pathname === "/"
+    ) {
       console.log("RENDER HOME PAGE");
       post.renderListOfPosts();
     } else if (window.location.pathname === "/src/pages/post.html") {
       console.log("RENDER SPECIFIC POST");
-    
+
       const id = post.getPostId();
       post.renderSpecificPost(id);
     }

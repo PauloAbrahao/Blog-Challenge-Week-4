@@ -137,7 +137,8 @@ class PostComponent {
         return +id;
     }
     validatePage() {
-        if (window.location.pathname === "/index.html" || window.location.pathname === "/") {
+        if (window.location.pathname === "/index.html" ||
+            window.location.pathname === "/") {
             console.log("RENDER HOME PAGE");
             post.renderListOfPosts();
         }

@@ -5,4 +5,4 @@ A blog made for the 4 week challenge - Compass UOL
 </br>
 
 <h3>Preview</h3>
-<img src="https://i.ibb.co/ZT5jQMb/homepage.png" />
+<img src="./assets/blog.png" />
